@@ -3,7 +3,6 @@ import { Ingreso } from './ingreso/ingreso.model';
 import { Egreso } from './egreso/egreso.model';
 import { IngresoServicio } from './ingreso/ingreso.service';
 import { EgresoServicio } from './egreso/egreso.service';
-import { NullVisitor } from '@angular/compiler/src/render3/r3_ast';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +20,7 @@ export class AppComponent {
     this.egresos = egresoServicio.egresos;
   }
 
-  getIngresoTotal() {
+  getIngresoTotal(): number {
     let ingresoTotal = 0;
     this.ingresos.forEach(ingreso => {
       ingresoTotal += ingreso.valor;
@@ -30,7 +29,7 @@ export class AppComponent {
     return ingresoTotal;
   }
 
-  getEgresoTotal() {
+  getEgresoTotal(): number {
     let egresoTotal = 0;
     this.egresos.forEach(egreso => {
       egresoTotal += egreso.valor;
@@ -39,11 +38,11 @@ export class AppComponent {
     return egresoTotal;
   }
 
-  getPorcentajeTotal() {
+  getPorcentajeTotal(): number {
     return this.getEgresoTotal() / this.getIngresoTotal();
   }
 
-  getPresupuestoTotal() {
+  getPresupuestoTotal(): number {
     return this.getIngresoTotal() - this.getEgresoTotal();
   }
 }
